@@ -1,8 +1,8 @@
-const azul = document.getElementById('azul')
-const amarillo = document.getElementById('amarillo')
-const rojo = document.getElementById('rojo')
-const verde = document.getElementById('verde')
-const btnEmpezar = document.getElementById('btnEmpezar')
+const azul = document.getElementById('azul');
+const amarillo = document.getElementById('amarillo');
+const rojo = document.getElementById('rojo');
+const verde = document.getElementById('verde');
+const btnEmpezar = document.getElementById('btnEmpezar');
 const ultimo_nivel = 10;
 
 class Juego {
@@ -66,7 +66,7 @@ class Juego {
     iluminarSecuencia(){
         for(let i = 0; i < this.nivel; i++){
             const color = this.transformarNumeroAColor(this.secuencia[i]);
-            setTimeout( () => this.iluminarColor(color), 1000 * i )
+            setTimeout( () => this.iluminarColor(color), 1000 * i );
         }
     }
     iluminarColor(color){
@@ -100,12 +100,18 @@ class Juego {
                 if(this.nivel ===(ultimo_nivel + 1)){
                     this.ganoElJuego();
                 }else{
-                    setTimeout( this.siguienteNivel, 1500 );
+                    this.ganoElNivel();
                 }
             }
         }else{
             this.perdioElJuego();
         }
+    }
+    ganoElNivel(){
+        swal('Felicidades!', 'Siguiente Nivel', 'success')
+            .then(()=>{
+                setTimeout( this.siguienteNivel, 1000 );
+            });
     }
     ganoElJuego(){
         swal('Felicidades!', 'Lograste superar todos los niveles', 'success')
